@@ -107,12 +107,36 @@ function Car(model, milesPerGallon) {
 }
 
 //create a fill method that Gives cars the ability to get fueled with- Add the gallons (param) to `tank`.
-//if tank is at 0 -> fill tank with X amount of gallons (param)
+//if tank is at 0 -> fill tank with X amount of gallons (param) 10?
+//then we want to push gallons to the tank
+
  Car.prototype.fill = function(gallons){
-  if(this.tank.length < 10){
+  if(this.tank.length = 0){
     this.tank.push(gallons);
   }
  }
+
+ //next we need to create another method .drive that tasks X distance as param
+
+ Car.prototype.drive = function(distance){ 
+  this.odometer = [];
+ }
+
+ // create a .drive method that returns a string "I ran out of fuel at x miles!" x is the odometer
+
+ Car.prototype.drive = function(){
+   return `I ran out of fuel at ${this.odometer} miles!`;
+ }
+
+ // create objects
+
+ const carOne = new Car ('VW Jetta', 24);
+ const carTwo = new Car ('Subaru Outback', 23);
+ const carThree = new Car ('Toyota Tacoma',22 )
+
+ // test the methods now
+
+ console.log(carOne.drive());
 
 /*
   TASK 3
