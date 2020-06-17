@@ -39,9 +39,6 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
-}
 
 // creating a constructor function 
 // it takes 3 properties name , age and stomach which is an empty array 
@@ -51,7 +48,7 @@ function Person(name, age){
   this.stomach = [];
 }
 
-// create an eat method that gives the person the ability to eat some edible - it has a param of somthing that we can pass food into 
+// create an eat method that gives the person the ability to eat some edible - it has a param of something that we can pass food into 
 // if the stomach length is < 10 the person can eat 
 // we want to push the argument of something edible to the array (stomach)
 
@@ -100,9 +97,22 @@ console.log(personOne.stomach);
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+//creating a constructor functions
+//takes 2 properties model, milesPerGallon, tank[],odometer[]
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = [];
+  this.odometer = [];
 }
+
+//create a fill method that Gives cars the ability to get fueled with- Add the gallons (param) to `tank`.
+//if tank is at 0 -> fill tank with X amount of gallons (param)
+ Car.prototype.fill = function(gallons){
+  if(this.tank.length < 10){
+    this.tank.push(gallons);
+  }
+ }
 
 /*
   TASK 3
