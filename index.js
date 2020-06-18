@@ -42,6 +42,8 @@ Airplane.prototype.land = function () {
 
 // creating a constructor function 
 // it takes 3 properties name , age and stomach which is an empty array 
+console.log('Task1');
+
 function Person(name, age){
   this.name = name;
   this.age = age;
@@ -71,14 +73,12 @@ Person.prototype.toString = function(){
 
 // create my object 
 
-const personOne = new Person('Ashton', 34);
-const personTwo = new Person('Devin', 26);
-const personThree = new Person('Cora', 21);
+const personOne = new Person('Bea', 29);
 
 console.log(personOne.toString());
-personOne.eat('tacos');
-personOne.eat('fried chicken');
-personOne.eat('sashimi');
+personOne.eat('pizza');
+personOne.eat('boba');
+personOne.eat('brownies');
 console.log(personOne.stomach);
 personOne.poop();
 console.log(personOne.stomach);
@@ -99,11 +99,12 @@ console.log(personOne.stomach);
 
 //creating a constructor functions
 //takes 2 properties model, milesPerGallon, tank[],odometer[]
+
 function Car(model, milesPerGallon) {
   this.model = model;
   this.milesPerGallon = milesPerGallon;
-  this.tank = [];
-  this.odometer = [];
+  this.tank = 0;
+  this.odometer = 0;
 }
 
 //create a fill method that Gives cars the ability to get fueled with- Add the gallons (param) to `tank`.
@@ -111,32 +112,31 @@ function Car(model, milesPerGallon) {
 //then we want to push gallons to the tank
 
  Car.prototype.fill = function(gallons){
-  if(this.tank.length = 0){
-    this.tank.push(gallons);
-  }
- }
+  this.tank += gallons
+  };
 
+ //**stretch below **
  //next we need to create another method .drive that tasks X distance as param
 
  Car.prototype.drive = function(distance){ 
-  this.odometer = [];
- }
+  if (this.tank - distance / this.milesPerGallon > 0){ //tank of gas, minus how many miles driven divided by mpg is greater than 0,
+  this.odometer += distance // then the odometer will add the distance (param) amount driven
+  this.tank -= distance / this.milesPerGallon  //then the tank subtracts gallons used per mile
+  }else { //if this tank minus how many miles driven divided by mpg is lessthan or equal to 0,
+    this.odometer += this.milesPerGallon * this.tank //then the miles driven will still add on to odometer
+    this.tank = 0 //reassign to zero not negative
+    return `I ran out of fuel at ${this.odometer} miles!`;
+  } 
+  }
+// += assignment operator adds a value to a variable.
+//-= operator subtracts a value from a variable.
+//this odometer += (this.mpg * this.tank)
 
- // create a .drive method that returns a string "I ran out of fuel at x miles!" x is the odometer
+ const carOne = new Car ('Jetta', 24);
 
- Car.prototype.drive = function(){
-   return `I ran out of fuel at ${this.odometer} miles!`;
- }
-
- // create objects
-
- const carOne = new Car ('VW Jetta', 24);
- const carTwo = new Car ('Subaru Outback', 23);
- const carThree = new Car ('Toyota Tacoma',22 )
-
- // test the methods now
-
- console.log(carOne.drive());
+ console.log('Task 2 - fill the tank');
+ carOne.fill(10);
+ console.log(carOne);
 
 /*
   TASK 3
@@ -145,9 +145,17 @@ function Car(model, milesPerGallon) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age) //passing this 'this'when calling person
+  this.favoriteToy = favoriteToy;
 
 }
+Baby.prototype = Object.create(Person.prototype)
+Baby.prototype.play = function() {
+  return `Playing with this ${this.favoriteToy}`
+}
+
+let Sam = new Baby('Sam',1 ,'Teddy bear');
 
 /* 
   TASK 4
