@@ -161,10 +161,10 @@ let Sam = new Baby('Sam',1 ,'Teddy bear');
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Global/Window Binding - when in the global scope, the value of THIS will be the window or console object
+  2. Implicit Binding - implied that if you're using a method on an object that the context that you want is bound to what is left of the dot. Whenever a function is called by a preceding dot, the object left of the dot gets THIS
+  3. New Binding - has to do with constructor functions - whenever a constructor function is used, THIS refers to the specific instance of the object that is created and returned by the constructor function
+  4. Explicit Binding - [.bind .call .apply] binding objects together - whenever JavaScripts .call or .apply method is used, THIS  is explicitly defined
 */
 
 
